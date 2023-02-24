@@ -12,23 +12,101 @@ function getComputerChoice() {
 
 }
 
-function play(playSelection, computerSelection) {
+function playRound(playSelection, computerSelection) {
     let player1 = playSelection.toUpperCase();
     let player2 = computerSelection.toUpperCase();
-    let result = (player1 == "ROCK" && player2 == "PAPER") 
-    ?    "You lose! Paper beats Rock"
-    :   (player1 == "ROCK" && player2 == "SCISSOR")
-    ?   "You win! Rock beats Scissor"
-    :   "You draw!"
 
+    let message;
+    let result;
+    if(player1 == "ROCK"){
+        if(player2 == "PAPER"){
+            message = `You lose! ${player2} beats ${player1}`; 
+            result = "lose";
+        }
+        else if (player2 == "SCISSOR"){
+            message = `You win! ${player1} beats ${player2}`;
+            result = "win";
+        }
+        else{
+            message = "You draw!"
+            result = "draw";
+        }
+    }
+    
+    if(player1 == "SCISSOR"){
+        if(player2 == "PAPER"){
+            message = `You win! ${player1} beats ${player2}`;  
+            result = "win";
+        }
+        else if (player2 == "ROCK"){
+            message = `You Lose! ${player2} beats ${player1}`;
+            result = "lose";
+        }
+        else{
+            message = "You draw!";
+            result = "draw";
+        }
+    
+    }
+    if(player1 == "PAPER"){
+        if(player2 == "SCISSOR"){
+            message = `You Lose! ${player2} beats ${player1}`;  
+            result = "lose";
+        }
+        else if (player2 == "ROCK"){
+            message = `You win! ${player1} beats ${player2}`;
+            result = "win";
+        }
+        else{
+            message = "You draw!";
+            result = "draw";
+        }
+    
+    }
+    alert(message);
     return result;
 
 }
 
-const computerSelection = getComputerChoice();
-const computerSelection1 = getComputerChoice();
-const computerSelection2 = getComputerChoice();
+function game(){
 
-console.log(play("rock", computerSelection));
-console.log(play("rock", computerSelection1));
-console.log(play("rock", computerSelection2));
+    let computerSelection;
+    let playSelection;
+    let result;
+    let playerTotal = 0;
+    let computerTotal = 0;
+    let drawTotal = 0
+    let message;
+    for(let i =0; i<5; i++){
+        computerSelection = getComputerChoice();
+        playSelection = prompt("Rock, Paper or Scissor?");
+        result= playRound(playSelection, computerSelection);
+        //result= playRound("rock", "rock");
+
+        if (result=="win"){
+            playerTotal =+ playerTotal+1;
+            
+        }
+        else if(result=="lose"){
+            computerTotal=+ computerTotal+1;
+        }
+        else{
+            drawTotal =+ drawTotal+1;
+        }
+        alert(`You: ${playerTotal}  Computer: ${computerTotal}  Draw: ${drawTotal}`);
+    }
+    if(playerTotal> computerTotal){
+       message = "Winner";
+    }
+    else if(playerTotal< computerTotal){
+        message = "Loser";
+    }
+    else{
+        message = "Draw";
+    }
+
+    alert(`${message}\nYou: ${playerTotal}  Computer: ${computerTotal}  Draw: ${drawTotal}`);
+
+}
+
+game();
