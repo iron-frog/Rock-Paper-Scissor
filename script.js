@@ -13,62 +13,63 @@ function getComputerChoice() {
 }
 
 function playRound(playSelection, computerSelection) {
+    //console.log(playSelection);
     let player1 = playSelection.toUpperCase();
     let player2 = computerSelection.toUpperCase();
 
     let message;
     let result;
-    if(player1 == "ROCK"){
-        if(player2 == "PAPER"){
-            message = `You lose! ${player2} beats ${player1}`; 
+    if (player1 == "ROCK") {
+        if (player2 == "PAPER") {
+            message = `You lose! ${player2} beats ${player1}`;
             result = "lose";
         }
-        else if (player2 == "SCISSOR"){
+        else if (player2 == "SCISSOR") {
             message = `You win! ${player1} beats ${player2}`;
             result = "win";
         }
-        else{
+        else {
             message = `You draw! ${player1} and ${player2}`;
             result = "draw";
         }
     }
-    
-    if(player1 == "SCISSOR"){
-        if(player2 == "PAPER"){
-            message = `You win! ${player1} beats ${player2}`;  
+
+    if (player1 == "SCISSOR") {
+        if (player2 == "PAPER") {
+            message = `You win! ${player1} beats ${player2}`;
             result = "win";
         }
-        else if (player2 == "ROCK"){
+        else if (player2 == "ROCK") {
             message = `You Lose! ${player2} beats ${player1}`;
             result = "lose";
         }
-        else{
+        else {
             message = `You draw! ${player1} and ${player2}`;
             result = "draw";
         }
-    
+
     }
-    if(player1 == "PAPER"){
-        if(player2 == "SCISSOR"){
-            message = `You Lose! ${player2} beats ${player1}`;  
+    if (player1 == "PAPER") {
+        if (player2 == "SCISSOR") {
+            message = `You Lose! ${player2} beats ${player1}`;
             result = "lose";
         }
-        else if (player2 == "ROCK"){
+        else if (player2 == "ROCK") {
             message = `You win! ${player1} beats ${player2}`;
             result = "win";
         }
-        else{
+        else {
             message = `You draw! ${player1} and ${player2}`;
             result = "draw";
         }
-    
+
     }
     alert(message);
     return result;
 
 }
 
-function game(){
+function game() {
 
     let computerSelection;
     let playSelection;
@@ -77,31 +78,31 @@ function game(){
     let computerTotal = 0;
     let drawTotal = 0
     let message;
-    for(let i =0; i<5; i++){
+    for (let i = 0; i < 5; i++) {
         computerSelection = getComputerChoice();
         playSelection = prompt("Rock, Paper or Scissor?");
-        result= playRound(playSelection, computerSelection);
+        result = playRound(playSelection, computerSelection);
         //result= playRound("rock", "rock");
 
-        if (result=="win"){
-            playerTotal =+ playerTotal+1;
-            
+        if (result == "win") {
+            playerTotal = + playerTotal + 1;
+
         }
-        else if(result=="lose"){
-            computerTotal=+ computerTotal+1;
+        else if (result == "lose") {
+            computerTotal = + computerTotal + 1;
         }
-        else{
-            drawTotal =+ drawTotal+1;
+        else {
+            drawTotal = + drawTotal + 1;
         }
         alert(`You: ${playerTotal}  Computer: ${computerTotal}  Draw: ${drawTotal}`);
     }
-    if(playerTotal> computerTotal){
-       message = "Winner";
+    if (playerTotal > computerTotal) {
+        message = "Winner";
     }
-    else if(playerTotal< computerTotal){
+    else if (playerTotal < computerTotal) {
         message = "Loser";
     }
-    else{
+    else {
         message = "Draw";
     }
 
@@ -109,4 +110,25 @@ function game(){
 
 }
 
-game();
+//game();
+const buttons = document.querySelectorAll(".choice");
+
+function returnChoice(e) {
+
+    //console.log(e.target.className.split(' ')[1])
+    return e.target.className.split(' ')[1]
+}
+
+function play(player, computer) {
+    let a = player.toUpperCase();
+    let b = computer.toUpperCase();
+    console.log(a, b);
+}
+
+//playRound("rock", getComputerChoice());
+
+buttons.forEach(button => button.addEventListener('click', (e) => {
+    const playerChoice = returnChoice(e);
+    const computerChoice = getComputerChoice();
+    playRound(playerChoice, computerChoice);
+}));
