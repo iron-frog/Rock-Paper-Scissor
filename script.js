@@ -28,7 +28,7 @@ function playRound(playSelection, computerSelection) {
             result = "win";
         }
         else{
-            message = "You draw!"
+            message = `You draw! ${player1} and ${player2}`;
             result = "draw";
         }
     }
@@ -43,7 +43,7 @@ function playRound(playSelection, computerSelection) {
             result = "lose";
         }
         else{
-            message = "You draw!";
+            message = `You draw! ${player1} and ${player2}`;
             result = "draw";
         }
     
@@ -58,7 +58,7 @@ function playRound(playSelection, computerSelection) {
             result = "win";
         }
         else{
-            message = "You draw!";
+            message = `You draw! ${player1} and ${player2}`;
             result = "draw";
         }
     
