@@ -15,6 +15,8 @@
 
 .rps_icon{
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -51,22 +53,22 @@
     transform: translateX(-50px);
 }
 
-
-.lose_overlay{
-    background-color: black;
-    position:fixed;
-}
 .button_container{
     display: flex;
-    gap: 20px;
+    /* gap: 50px; */
+    /* flex:1; */
+    width:100%;
+    justify-content: space-evenly;
+    
 }
 
 .choice{
     border: 2px solid black;
     font-size: 20px;
     border-radius: 5px;
-    padding: 2rem 5rem;
+    padding: 1rem 3rem;
     box-sizing: border-box;
+    
 }
 
 .choice:hover{
@@ -77,4 +79,18 @@
 .choice:active{
     transform: translateY(2px);
     box-shadow: 0px 1px;
+}
+
+@media (max-width: 1200px){
+    .player_icon, .computer_icon{
+        width: 300px;
+        height: 300px
+    }
+}
+
+@media (max-width: 810px){
+    .player_icon, .computer_icon{
+        width: 200px;
+        height: 200px
+    }
 }
