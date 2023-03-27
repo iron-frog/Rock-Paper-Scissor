@@ -131,15 +131,18 @@ function resetGame(){
     playerScore.textContent = `Player: ${playerTotal}`;
     computerScore.textContent = `Computer: ${computerTotal}`;
     matchResult.textContent = "-";
-    
+    changeImage("question", "question");
 }
 function returnChoice(e) {
     return e.target.className.split(' ')[1]
 }
 
 function changeImage(pStr, cStr) {
-    playerImage.src = `/images/${pStr}.png`;
-    computerImage.src = `/images/${cStr}.png`;
+    // playerImage.src = `images/${pStr}.png`;
+    // computerImage.src = `images/${cStr}.png`;
+    var baseUrl = window.location.href.replace(/\/[^\/]*$/, '') + '/';
+    playerImage.src = baseUrl + 'images/' + pStr + '.png';
+    computerImage.src = baseUrl + 'images/' + cStr + '.png';
 }
 
 function move(result) {
@@ -191,3 +194,4 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
     game(playerChoice, computerChoice);
 }));
 
+console.log(window.location.href)
