@@ -8,22 +8,52 @@
     display: flex;
     justify-content: center;
     gap: 50px;
+    font-size:30px;
 }
+
+
 
 .rps_icon{
     display: flex;
-    gap: 20px;
+    gap: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.result{
+    align-self: center;
+    width: 100px;
+    text-align: center;
+    transition: font-size .3s;
+}
+
+.result_bigger{
+    font-size: 40px;
+}
+
 .player_icon{
-    border: 5px solid red;
+    border: 5px solid rgb(240,128,128);
+    transition: transform .2s ease-in;
 }
 
 .computer_icon{
-    border: 5px solid blue;
+    border: 5px solid rgb(30,144,255);
+    transition: transform .2s ease-in;
 }
 
+.move-right{
+    transform: translateX(50px);
+}
+
+.move-left{
+    transform: translateX(-50px);
+}
+
+
+.lose_overlay{
+    background-color: black;
+    position:fixed;
+}
 .button_container{
     display: flex;
     gap: 20px;
@@ -34,4 +64,15 @@
     font-size: 20px;
     border-radius: 5px;
     padding: 2rem 5rem;
+    box-sizing: border-box;
+}
+
+.choice:hover{
+    background-color: goldenrod;
+    box-shadow: 0px 2px;
+}
+
+.choice:active{
+    transform: translateY(2px);
+    box-shadow: 0px 1px;
 }
